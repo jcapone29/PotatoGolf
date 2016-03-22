@@ -16,8 +16,8 @@
         }
 
         Test() {
-
-            console.log(this.bio);
+            this.pgaService.sideMenu = false;
+            console.log(this.pgaService.sideMenu);
 
         }
 

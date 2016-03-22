@@ -12,7 +12,7 @@
 
 
 
-    export class Potatos
+    export class Potato
     {
         Id: number;
         UserName: string;

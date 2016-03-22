@@ -1,0 +1,60 @@
+﻿
+<link href="../Styles/bootstrap.min.css" rel="stylesheet" />
+<link href="../Styles/app.css" rel="stylesheet" />
+<script src="../../Scripts/require.js"></script>
+<script src="../../Scripts/angular.min.js"></script>
+<script src="../../Scripts/jquery-2.2.0.min.js"></script>
+<script src="../../Scripts/bootstrap/bootstrap.min.js"></script>
+<script src="../../dist/app.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<body ng-app="pga.potato" ng-controller="PGACtrl as vm" >
+    <div class="mainpage">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Potato Golf Association</a>
+               </div>
+                <div class="navbar-inverse side-collapse" ng-class="{true: 'navbar-inverse side-collapse in', false: 'navbar-inverse side-collapse'}[vm.pgaService.sideMenu == true]" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav" ng-hide="vm.currentView == 'Login.html' || vm.currentView == 'NewUser.html'">
+                        <li class="active"><a href="#">News & Events</a></li>
+                        <li><a ng-click="vm.currentView = 'Standings.html'">Standings</a></li>
+                        <li><a ng-click="vm.currentView = 'Profile.html'">Potatos</a></li>
+                        <li class="dropdown ">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leagues<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Toggle League</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown userInfo">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Joe Capone <span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#">Edit Profile</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a ng-click="vm.currentView = 'Login.html'">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid" >
+
+
+            <div class="col-xs-12" ng-include="vm.currentView"></div>
+        </div>
+
+
+    </div>
+
+
+</body>

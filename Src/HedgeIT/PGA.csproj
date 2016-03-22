@@ -25,6 +25,7 @@
     <Content Include="app\Styles\app.css" />
     <Content Include="app\Styles\bootstrap.min.css" />
     <Content Include="app\views\Login.html" />
+    <Content Include="app\views\News.html" />
     <Content Include="app\views\NewUser.html" />
     <Content Include="app\views\Profile.html" />
     <Content Include="app\views\Standings.html" />
@@ -809,6 +810,8 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\ts\Entities.ts" />
+    <TypeScriptCompile Include="app\ts\Login.controller.ts" />
     <TypeScriptCompile Include="app\ts\PGA.service.ts" />
     <TypeScriptCompile Include="app\ts\PGA.controller.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
@@ -846,6 +849,9 @@
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\forms\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
