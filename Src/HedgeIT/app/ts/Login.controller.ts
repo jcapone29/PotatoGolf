@@ -12,7 +12,7 @@
 
         constructor(public $scope: any, public pgaService: PGAService, public enities: PGAEntites) {
 
-
+           
         }
 
         CreateUser() {
@@ -28,16 +28,25 @@
 
         LoginUser() {
 
-            console.log(this.pgaService.currentUser);
-            this.pgaService.GetUser().then((response: any) => {
-                console.log(response);
+            this.pgaService.GetUser().then((response: Potato) => {
+              
+                localStorage.setItem("Potato", JSON.stringify(this.pgaService.currentUser));
+
+                this.pgaService.UserLoginCheck();
+
             });
         }
 
+        Logout() {
+
+           this.currentView = 'Login.html';
+        
+            localStorage.removeItem("Potato");
+        }
+       
     }
 
     app.controller("LoginCtrl", LoginCtrl);
-
 
 
 }

@@ -28,6 +28,7 @@
     <Content Include="app\views\News.html" />
     <Content Include="app\views\NewUser.html" />
     <Content Include="app\views\Profile.html" />
+    <Content Include="app\views\Scores.html" />
     <Content Include="app\views\Standings.html" />
     <Content Include="app\views\index.html" />
     <Content Include="Images\potatos.png" />
@@ -814,6 +815,7 @@
     <TypeScriptCompile Include="app\ts\Login.controller.ts" />
     <TypeScriptCompile Include="app\ts\PGA.service.ts" />
     <TypeScriptCompile Include="app\ts\PGA.controller.ts" />
+    <TypeScriptCompile Include="app\ts\Scores.controller.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-component-router.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />

@@ -24,14 +24,14 @@
                     <a class="navbar-brand" href="#">Potato Golf Association</a>
                </div>
                 <div class="navbar-inverse side-collapse" ng-class="{true: 'navbar-inverse side-collapse in', false: 'navbar-inverse side-collapse'}[vm.pgaService.sideMenu == true]" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav" ng-hide="vm.currentView == 'Login.html' || vm.currentView == 'NewUser.html'">
-                        <li class="active"><a href="#">News & Events</a></li>
-                        <li><a ng-click="vm.currentView = 'Standings.html'">Standings</a></li>
-                        <li><a ng-click="vm.currentView = 'Profile.html'">Potatos</a></li>
+                    <ul class="nav navbar-nav" ng-hide="vm.pgaService.currentView == 'Login.html' || vm.pgaService.currentView == 'NewUser.html'">
+                        <li ng-class="{'active': vm.pgaService.currentView == 'News.html'}"><a ng-click="vm.pgaService.currentView = 'News.html'">News & Events</a></li>
+                        <li ng-class="{'active': vm.pgaService.currentView == 'Standings.html'}"><a ng-click="vm.pgaService.currentView = 'Standings.html'">Standings</a></li>
+                        <li ng-class="{'active': vm.pgaService.currentView == 'Profile.html'}"><a ng-click="vm.pgaService.currentView = 'Profile.html'">Potatos</a></li>
                         <li class="dropdown ">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Leagues<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Toggle League</a></li>
+                                <li><a ng-click="vm.pgaService.currentView = 'Scores.html'">Toggle League</a></li>
                             </ul>
                         </li>
                         <li class="dropdown userInfo">
@@ -39,7 +39,7 @@
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li><a href="#">Edit Profile</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a ng-click="vm.currentView = 'Login.html'">Logout</a></li>
+                                <li ng-controller="LoginCtrl as vm"><a ng-click="vm.pgaService.currentView = 'Login.html'; vm.Logout()">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -50,7 +50,7 @@
         <div class="container-fluid" >
 
 
-            <div class="col-xs-12" ng-include="vm.currentView"></div>
+            <div class="col-xs-12" ng-include="vm.pgaService.currentView"></div>
         </div>
 
 

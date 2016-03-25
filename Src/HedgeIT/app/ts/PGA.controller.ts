@@ -2,7 +2,7 @@
 
     export class PGACtrl {
 
-        currentView: string;
+        
          bio= 'test';
 
 
@@ -10,12 +10,13 @@
 
 
 
-        constructor(public $scope: any, public pgaService: PGAService, public enities: PGAEntites) {
+         constructor(public $scope: any, public pgaService: PGAService, public enities: PGAEntites) {
 
-          
+             
         }
 
-        Test() {
+         Test() {
+
             this.pgaService.sideMenu = false;
             console.log(this.pgaService.sideMenu);
 

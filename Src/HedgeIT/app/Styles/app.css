@@ -5,7 +5,9 @@
 span {
     font-style: italic;
 }
-
+.navbar{
+    z-index:1 !important;
+}
 .navbar .navbar-nav {
     display: inline-block;
     float: left;
