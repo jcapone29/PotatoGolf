@@ -18,7 +18,7 @@
          Test() {
 
             this.pgaService.sideMenu = false;
-            console.log(this.pgaService.sideMenu);
+           
 
         }
 

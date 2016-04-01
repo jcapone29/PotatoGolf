@@ -30,11 +30,11 @@
 
     export class Scores {
 
-        Id: number;
-        UserId: string;
+
+        UserId: Potato;
         Score: number;
-        Course: string;
-        RoundDate: Date;
+        Course: Course;
+        RoundDate: Date ;
     }
 
     export class Course {
@@ -46,6 +46,10 @@
         Tee: string;
         UsgaRating: string;
         Slope: string;
+        Gender: string;
+        Front: string;
+        Back: string;
+        BogeyRating: string;
 
     }
 

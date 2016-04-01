@@ -29,7 +29,8 @@
         LoginUser() {
 
             this.pgaService.GetUser().then((response: Potato) => {
-              
+
+                this.pgaService.currentUser = response;
                 localStorage.setItem("Potato", JSON.stringify(this.pgaService.currentUser));
 
                 this.pgaService.UserLoginCheck();

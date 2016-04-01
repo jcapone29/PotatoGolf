@@ -64,6 +64,7 @@ var PotatoGolf;
             LoginCtrl.prototype.LoginUser = function () {
                 var _this = this;
                 this.pgaService.GetUser().then(function (response) {
+                    _this.pgaService.currentUser = response;
                     localStorage.setItem("Potato", JSON.stringify(_this.pgaService.currentUser));
                     _this.pgaService.UserLoginCheck();
                 });
@@ -92,7 +93,6 @@ var PotatoGolf;
             }
             PGACtrl.prototype.Test = function () {
                 this.pgaService.sideMenu = false;
-                console.log(this.pgaService.sideMenu);
             };
             PGACtrl.$inject = ["$scope", "PGAService", "PGAEntites"];
             return PGACtrl;
@@ -114,37 +114,55 @@ var PotatoGolf;
                 this.leagueMembers = new Array();
                 this.sideMenu = true;
                 this.localUrl = "http://localhost:51201/api/Potato/";
+                this.apiUrl = "http://ec2-52-91-68-23.compute-1.amazonaws.com/CapApi/api/Potato/";
                 this.courseList = new Array();
+                this.selectedCourse = new Data.Course();
+                this.userScore = new Data.Scores();
                 this.UserLoginCheck();
             }
             PGAService.prototype.GetUser = function () {
-                return this.$http.get(this.localUrl + 'getUser', { params: this.currentUser }).then(function (r) { return r.data; });
+                return this.$http.get(this.apiUrl + 'getUser', { params: this.currentUser }).then(function (r) { return r.data; });
             };
             PGAService.prototype.CreateUser = function () {
-                return this.$http.post(this.localUrl + 'createUser', this.currentUser).then(function (response) {
+                return this.$http.post(this.apiUrl + 'createUser', this.currentUser).then(function (response) {
                     return response;
                 });
             };
             PGAService.prototype.GetLeague = function () {
-                return this.$http.get(this.localUrl + 'getLeague', this.currentUser).then(function (r) { return r.data; });
+                return this.$http.get(this.apiUrl + 'getLeague', this.currentUser).then(function (r) { return r.data; });
             };
             PGAService.prototype.GetStates = function () {
                 return this.$http.get(this.localUrl + 'getStates').then(function (r) { return r.data; });
             };
             PGAService.prototype.GetCourseList = function () {
-                console.log(this.currentUser);
                 var param = new Data.CourseParams();
                 param.gender = this.currentUser.Gender;
                 param.state = this.stateSelect;
                 return this.$http.get(this.localUrl + 'getCourseList', { params: param }).then(function (r) { return r.data; });
             };
+            PGAService.prototype.AddScore = function () {
+                this.userScore.Course = this.selectedCourse;
+                this.userScore.UserId = this.currentUser;
+                this.userScore.RoundDate = new Date();
+                return this.$http.post(this.localUrl + 'postScore', this.userScore).then(function (response) {
+                    console.log(response);
+                    return response;
+                });
+            };
             PGAService.prototype.UserLoginCheck = function () {
-                this.currentUser = JSON.parse(localStorage.getItem("Potato"));
-                if (this.currentUser != null) {
-                    this.currentView = "News.html";
+                var user = JSON.parse(localStorage.getItem("Potato"));
+                if (user == null) {
+                    this.currentView = "Login.html";
                 }
                 else {
-                    this.currentView = "Login.html";
+                    this.currentUser = user[0];
+                    console.log(this.currentUser.FirstName);
+                    if (this.currentUser != null) {
+                        this.currentView = "News.html";
+                    }
+                    else {
+                        this.currentView = "Login.html";
+                    }
                 }
             };
             PGAService.$inject = ["$http", "$q", "PGAEntites"];
@@ -159,10 +177,11 @@ var PotatoGolf;
     var Data;
     (function (Data) {
         var ScoresCtrl = (function () {
-            function ScoresCtrl($scope, pgaService, enities) {
+            function ScoresCtrl($scope, pgaService, enities, _) {
                 this.$scope = $scope;
                 this.pgaService = pgaService;
                 this.enities = enities;
+                this._ = _;
                 this.GetStates();
             }
             ScoresCtrl.prototype.GetStates = function () {
@@ -175,7 +194,19 @@ var PotatoGolf;
                 var _this = this;
                 this.pgaService.GetCourseList().then(function (response) {
                     _this.pgaService.courseList = response;
+                    _this.pgaService.courseNames = _.uniq(_.map(_this.pgaService.courseList, function (e) { return e.Name; }));
                 });
+            };
+            ScoresCtrl.prototype.GetTeeType = function (course) {
+                this.pgaService.selectedCourseList = _.filter(this.pgaService.courseList, function (o) { return o.Name == course.replace(/^\s+|\s+$/g, ""); });
+                console.log(this.pgaService.selectedCourseList);
+            };
+            ScoresCtrl.prototype.GetPlayedCourse = function () {
+                var n = this.pgaService.selectedCourseList[0].Name;
+                var g = this.pgaService.currentUser.Gender;
+                var t = this.pgaService.selectedCourse.Tee.replace(/^\s+|\s+$/g, "");
+                this.pgaService.selectedCourse = _.head(_.filter(this.pgaService.selectedCourseList, function (o) { return o.Name == n, o.Gender == g, o.Tee == t; }));
+                console.log(this.pgaService.selectedCourse);
             };
             ScoresCtrl.$inject = ["$scope", "PGAService", "PGAEntites"];
             return ScoresCtrl;

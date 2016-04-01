@@ -1,10 +1,11 @@
 ﻿
 <link href="../Styles/bootstrap.min.css" rel="stylesheet" />
 <link href="../Styles/app.css" rel="stylesheet" />
-<script src="../../Scripts/require.js"></script>
+<link href="../Styles/animate.min.css" rel="stylesheet" />
 <script src="../../Scripts/angular.min.js"></script>
 <script src="../../Scripts/jquery-2.2.0.min.js"></script>
 <script src="../../Scripts/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
 <script src="../../dist/app.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -35,7 +36,7 @@
                             </ul>
                         </li>
                         <li class="dropdown userInfo">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Joe Capone <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>{{vm.pgaService.currentUser.FirstName}} {{vm.pgaService.currentUser.LastName}}</span><span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li><a href="#">Edit Profile</a></li>
                                 <li role="separator" class="divider"></li>

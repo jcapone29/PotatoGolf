@@ -31,6 +31,8 @@
     <Content Include="app\views\Scores.html" />
     <Content Include="app\views\Standings.html" />
     <Content Include="app\views\index.html" />
+    <Content Include="app\Styles\animate.css" />
+    <Content Include="app\Styles\animate.min.css" />
     <Content Include="Images\potatos.png" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -854,6 +856,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\forms\" />
+    <Folder Include="Content\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>

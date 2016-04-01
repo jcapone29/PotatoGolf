@@ -5,17 +5,19 @@
 span {
     font-style: italic;
 }
-.navbar{
-    z-index:1 !important;
-}
-.navbar .navbar-nav {
-    display: inline-block;
-    float: left;
+
+.navbar {
+    z-index: 1 !important;
 }
 
-.navbar .navbar-collapse {
-    text-align: center;
-}
+    .navbar .navbar-nav {
+        display: inline-block;
+        float: left;
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
 
 .navbar-default {
     background-color: #75271F;
@@ -23,27 +25,28 @@ span {
     border-radius: 0;
 }
 
-body{
-    background: #E1E1E1;
-
+body {
+    background: #ECECEC;
 }
-.userInfo{
-        position: fixed !important;
+
+.userInfo {
+    position: fixed !important;
     right: 0 !important;
 }
 
-.loginContainer{
- position: relative;
+.loginContainer {
+    position: relative;
 }
+
 .loginInput {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .passValidity {
-    background: red; 
+    background: red;
 }
 
 @media screen and (max-width: 768px) {
@@ -54,13 +57,13 @@ body{
         transition: left .4s;
     }
 
-    .userInfo{
+    .userInfo {
         position: relative !important;
+    }
 
-}
-        .side-collapse-container.out {
-            left: 200px;
-        }
+    .side-collapse-container.out {
+        left: 200px;
+    }
 
     .side-collapse {
         top: 50px;
@@ -82,17 +85,72 @@ body{
     }
 }
 
-.stats{
-     overflow:auto;
-       height:100%;
-    max-height:600px;
+.stats {
+    overflow: auto;
+    height: 100%;
+    max-height: 600px;
 }
 
 .bio {
-    background: transparent; 
+    background: transparent;
     resize: none;
 }
 
-.userBio{
+.userBio {
+}
 
+.scores {
+    height: 80px;
+    font-size: 25px;
+    color: #04640C;
+    text-align: center;
+    font-weight: 500;
+    margin: 0 auto;
+    width: 100px;
+    background-color: #D5D0D0;
+    border-radius: 15px;
+}
+
+.scoreLabels {
+    text-align: center;
+    font-weight: 500;
+    color: blue;
+    font-size: 20px;
+}
+
+.inputtext {
+    background-color: #D5D0D0;
+    color: #04640C;
+}
+
+.underPar {
+    color: red !important;
+}
+
+.overPar{
+    color: green;
+}
+
+.courseInfo{
+    font-size: 20px;
+    color: #220D0D;
+    font-weight: 600;
+    font-family: inherit;
+}
+
+.courseInfoVals{
+        font-size: 20px;
+    color: #04640C;
+    font-weight: 600;
+    font-family: inherit;
+    display: block;
+}
+
+.submitBtn{
+    color: #FFFFFF;
+    background-color: #268832;
+    border-color: #0B280D;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: inherit;
 }
